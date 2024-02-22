@@ -3,9 +3,25 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate  } from "react-router-dom";
 
 export const FinancingCta = () => {
+
+  const [valorVeiculo, setValorVeiculo] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (event: any) => {
+    const inputValue = event.target.value;
+    if (/^\d*$/.test(inputValue) || inputValue === '') {
+      setValorVeiculo(inputValue);
+    }
+  };
+
+  const handleSubmit = () => {
+    navigate("/financiamento", { state: { valorVeiculo } });
+  };
+
   return (
     <Grid item xs={12} mb={6} p={5}>
       <Box
@@ -35,16 +51,21 @@ export const FinancingCta = () => {
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }} gap={3} mt={4}>
-          <TextField
-            id="margin-none"
-            margin="none"
-            sx={{ backgroundColor: "#ffffff"}}
-            label="Valor do veículo"
-            variant="filled"
-          />
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <TextField
+              error={false}
+              id="margin-none"
+              margin="none"
+              sx={{ backgroundColor: "#ffffff"}}
+              label="Valor do veículo"
+              variant="filled"
+              value={valorVeiculo}
+              onChange={handleInputChange}
+            />
+          </Box>
 
-          <Link to="/financiamento">
-            <Button
+          <Button
+              disabled={!valorVeiculo}
               color="inherit"
               variant="contained"
               sx={{
@@ -54,11 +75,16 @@ export const FinancingCta = () => {
                 "&:hover": {
                   backgroundColor: "#A31115",
                 },
+                "&:disabled": {
+                  backgroundColor: "#E98083",
+                  color: "#ffffff",
+                  cursor: "no-drop"
+                }
               }}
+              onClick={handleSubmit}
             >
               Faça uma simulação
             </Button>
-          </Link>
         </Box>
       </Box>
     </Grid>
