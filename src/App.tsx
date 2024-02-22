@@ -1,10 +1,13 @@
-import { Button } from "@mui/material"
+import Box from "@mui/material/Box"
+
+import { Navbar } from "./components/Navbar"
 
 export const App = () => {
   return (
-    <div>
-      <Button variant="contained">Teste</Button>
-    </div>
+    <Box>
+      <Navbar />
+      
+    </Box>
   )
 }
 
