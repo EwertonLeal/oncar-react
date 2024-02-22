@@ -1,0 +1,19 @@
+.headingContent {
+    padding: 80px 4rem !important;
+}
+
+.oncarHeading {
+    font-weight: 700 !important;
+    font-size: 46px !important;
+    margin-bottom: 40px !important;
+    position: relative;
+}
+
+.oncarHeading::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 22%;
+    height: 6px;
+    background-color: #C92227;
+}
