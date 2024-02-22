@@ -6,8 +6,8 @@ import Typography from "@mui/material/Typography";
 
 export const Navbar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }} component="header">
-      <AppBar position="sticky" sx={{ backgroundColor: "#ffffff" }} component="nav">
+    <Box sx={{ flexGrow: 1 }} component="header" mb={8} >
+      <AppBar position="fixed" sx={{ backgroundColor: "#ffffff" }} component="nav">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#1a1a1a" }}>
             Oncar
