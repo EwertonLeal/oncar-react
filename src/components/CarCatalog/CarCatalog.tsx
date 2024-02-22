@@ -70,7 +70,7 @@ export const CarCatalog = () => {
       </Grid>
 
       {/* CARDS */}
-      <Grid item xs={12} mb={10} textAlign="center">
+      <Grid item xs={12} mb={4} textAlign="center">
         <Box
           display="flex"
           px={5}
