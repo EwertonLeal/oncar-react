@@ -1,17 +1,19 @@
 import Box from "@mui/material/Box"
-
 import { Navbar } from "./components/Navbar"
-import { HeroSection } from "./components/HeroSection/HeroSection"
-import { CarCatalog } from "./components/CarCatalog/CarCatalog"
-import { FinancingCta } from "./components/FinancingCta/FinancingCta"
+import { Route, Routes } from "react-router-dom"
+
+import { Home } from "./pages/Home"
+import { CarAdmin } from "./pages/CarAdmin/CarAdmin"
 
 export const App = () => {
   return (
     <Box>
       <Navbar />
-      <HeroSection />
-      <CarCatalog />
-      <FinancingCta />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/admin" element={<CarAdmin />}></Route>
+      </Routes>
+
     </Box>
   )
 }
