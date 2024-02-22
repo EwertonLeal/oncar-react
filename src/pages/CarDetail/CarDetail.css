@@ -1,0 +1,20 @@
+.lista-caracteristicas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.lista-caracteristicas-item {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 5px 0px rgb(158, 158, 158);
+}

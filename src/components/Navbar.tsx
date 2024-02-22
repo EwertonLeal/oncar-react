@@ -14,7 +14,7 @@ export const Navbar = () => {
         component="nav"
       >
         <Toolbar sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: "none" }}>
             <Typography
               variant="h6"
               component="div"

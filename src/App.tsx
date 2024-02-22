@@ -6,6 +6,7 @@ import { Home } from "./pages/Home"
 import { CarAdmin } from "./pages/CarAdmin/CarAdmin"
 import { CarCatalogAdmin } from "./pages/CarCatalogs/CarCatalogAdmin"
 import { FinancingPage } from "./pages/FinancingPage/FinancingPage"
+import { CarDetail } from "./pages/CarDetail/CarDetail"
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <Route path="/admin" element={<CarAdmin />}></Route>
         <Route path="/catalogo" element={<CarCatalogAdmin />}></Route>
         <Route path="/financiamento" element={<FinancingPage />}></Route>
+        <Route path="/detalhes/:id" element={<CarDetail />}></Route>
       </Routes>
 
     </Box>
