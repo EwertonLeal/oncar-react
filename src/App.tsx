@@ -1,11 +1,10 @@
-import { Button } from "@mui/material";
+import { Button } from "@mui/material"
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
+    <div>
       <Button variant="contained">Teste</Button>
     </div>
-  );
+  )
 }
 
-export default App;
