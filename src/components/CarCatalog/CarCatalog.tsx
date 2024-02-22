@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
+import { Link } from "react-router-dom"
 
 export const CarCatalog = () => {
   return (
@@ -40,7 +41,7 @@ export const CarCatalog = () => {
             id="combo-box-demo"
             options={top5Films}
             sx={{ width: "100%" }}
-            renderInput={(params) => <TextField {...params} label="Filmes" />}
+            renderInput={(params) => <TextField sx={{ backgroundColor: "#ffffff"}} variant="filled" {...params} label="Marca" />}
           />
 
           <Autocomplete
@@ -48,7 +49,7 @@ export const CarCatalog = () => {
             id="combo-box-demo"
             options={top5Films}
             sx={{ width: "100%" }}
-            renderInput={(params) => <TextField {...params} label="Filmes" />}
+            renderInput={(params) => <TextField sx={{ backgroundColor: "#ffffff"}} variant="filled" {...params} label="Modelo" />}
           />
 
           <Autocomplete
@@ -56,7 +57,7 @@ export const CarCatalog = () => {
             id="combo-box-demo"
             options={top5Films}
             sx={{ width: "100%" }}
-            renderInput={(params) => <TextField {...params} label="Filmes" />}
+            renderInput={(params) => <TextField sx={{ backgroundColor: "#ffffff"}} variant="filled" {...params} label="Ano" />}
           />
 
           <Autocomplete
@@ -64,7 +65,7 @@ export const CarCatalog = () => {
             id="combo-box-demo"
             options={top5Films}
             sx={{ width: "100%" }}
-            renderInput={(params) => <TextField {...params} label="Filmes" />}
+            renderInput={(params) => <TextField sx={{ backgroundColor: "#ffffff"}} variant="filled" {...params} label="Cor" />}
           />
         </Box>
       </Grid>
@@ -110,20 +111,22 @@ export const CarCatalog = () => {
 
         </Box>
 
-        <Button
-            color="inherit"
-            variant="contained"
-            sx={{ 
-                marginTop: "40px",
-                backgroundColor: "#C92227",
-                color: "#ffffff",
-                "&:hover": {
-                    backgroundColor: "#A31115",
-                }
-            }}
-          >
-            Veja nosso catalogo
-          </Button>
+        <Link to="/catalogo">
+          <Button
+              color="inherit"
+              variant="contained"
+              sx={{ 
+                  marginTop: "40px",
+                  backgroundColor: "#C92227",
+                  color: "#ffffff",
+                  "&:hover": {
+                      backgroundColor: "#A31115",
+                  }
+              }}
+            >
+              Veja nosso catalogo completo
+            </Button>
+        </Link>
 
       </Grid>
     </Grid>
