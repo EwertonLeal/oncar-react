@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Car } from "../../models/car-model";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Filter } from "../../models/filter-model";
 
 export const CarCatalogAdmin = () => {
@@ -133,6 +133,15 @@ export const CarCatalogAdmin = () => {
     }
   };
 
+  const [car, setCar] = useState<Car>();
+  const navigate = useNavigate();
+
+  const handleCarDatail = (c: Car) => {
+    setCar(c);
+    const car = c;
+    navigate(`/detalhes/${c._id}`, { state: { car } });
+  };
+
   return (
     <Box pt={4}>
       <Grid item xs={12} mb={6} textAlign="center">
@@ -211,83 +220,79 @@ export const CarCatalogAdmin = () => {
       <Grid item xs={12} mb={4} textAlign="center">
         <Box display="flex" px={5} gap={2} flexWrap="wrap">
           {vehicleList?.map((car: Car) => (
-            <Link
-              to={`/detalhes/${car._id}`}
+            <Card
               key={car._id}
-              style={{ textDecoration: "none" }}
+              onClick={() => handleCarDatail(car)}
+              sx={{
+                width: { xs: "100%", sm: 270 },
+                backgroundColor: "#EEEFF1",
+                cursor: "pointer",
+                transition: ".1s ease-in ease-out",
+                "&:hover": { transform: "scale(1.05)" },
+              }}
             >
-              <Card
-                sx={{
-                  width: { xs: "100%", sm: 270 },
-                  backgroundColor: "#EEEFF1",
-                  cursor: "pointer",
-                  transition: ".1s ease-in ease-out",
-                  "&:hover": { transform: "scale(1.05)" },
-                }}
-              >
-                <CardMedia
-                  sx={{ height: 140, backgroundSize: "contain" }}
-                  image={`data:image/jpeg;base64,${car.carPhoto}`}
-                  title={car.model}
-                />
-                <CardContent>
+              <CardMedia
+                sx={{ height: 140, backgroundSize: "contain" }}
+                image={`data:image/jpeg;base64,${car.carPhoto}`}
+                title={car.model}
+              />
+              <CardContent>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: "18px",
+                    textAlign: "start",
+                    marginBottom: 1,
+                  }}
+                >
+                  {car.model}
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: "12px",
+                    textAlign: "start",
+                    marginBottom: 2,
+                    height: "40px",
+                  }}
+                >
+                  {car.description}
+                </Typography>
+
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: "18px",
+                    textAlign: "start",
+                    marginBottom: 2,
+                  }}
+                >
+                  R$ {car.price}
+                </Typography>
+
+                <Box display="flex" justifyContent="space-between">
                   <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 600,
-                      fontSize: "18px",
-                      textAlign: "start",
-                      marginBottom: 1,
-                    }}
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontSize: "12px", textAlign: "start" }}
                   >
-                    {car.model}
+                    {car.year}
                   </Typography>
 
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{
-                      fontSize: "12px",
-                      textAlign: "start",
-                      marginBottom: 2,
-                      height: "40px",
-                    }}
+                    sx={{ fontSize: "12px", textAlign: "start" }}
                   >
-                    {car.description}
+                    {car.kilometers} Km
                   </Typography>
-
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 600,
-                      fontSize: "18px",
-                      textAlign: "start",
-                      marginBottom: 2,
-                    }}
-                  >
-                    R$ {car.price}
-                  </Typography>
-
-                  <Box display="flex" justifyContent="space-between">
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ fontSize: "12px", textAlign: "start" }}
-                    >
-                      {car.year}
-                    </Typography>
-
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ fontSize: "12px", textAlign: "start" }}
-                    >
-                      {car.kilometers} Km
-                    </Typography>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Link>
+                </Box>
+              </CardContent>
+            </Card>
           ))}
         </Box>
       </Grid>

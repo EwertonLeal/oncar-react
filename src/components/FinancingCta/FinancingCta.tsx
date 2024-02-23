@@ -9,7 +9,6 @@ import { useNavigate  } from "react-router-dom";
 export const FinancingCta = () => {
 
   const [valorVeiculo, setValorVeiculo] = useState('');
-  const navigate = useNavigate();
 
   const handleInputChange = (event: any) => {
     const inputValue = event.target.value;
@@ -17,6 +16,8 @@ export const FinancingCta = () => {
       setValorVeiculo(inputValue);
     }
   };
+
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     navigate("/financiamento", { state: { valorVeiculo } });

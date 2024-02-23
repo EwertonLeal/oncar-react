@@ -14,8 +14,7 @@ export const CarCatalog = () => {
 
   const [vehicleList, setVehicleList] = useState<Car[] | null>(null);
   const [filters, setFilters] = useState(null);
-  const [car, setCar] = useState<Car>();
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +40,12 @@ export const CarCatalog = () => {
 
   }, []);
 
+  const [car, setCar] = useState<Car>();
+  const navigate = useNavigate();
+
   const handleCarDatail = (c: Car) => {
     setCar(c);
+    const car = c;
     navigate(`/detalhes/${c._id}`, { state: { car } });
   };
 

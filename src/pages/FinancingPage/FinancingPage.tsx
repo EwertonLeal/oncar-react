@@ -11,7 +11,9 @@ export const FinancingPage = () => {
   const [financingReject, setfinancingReject] = useState<any>("");
 
   useEffect(() => {
-    setValorVeiculo(location.state.valorVeiculo);
+    console.log(location.state?.valorVeiculo);
+    
+    setValorVeiculo(location.state?.valorVeiculo);
     const score = Math.floor(Math.random() * 999) + 1;
 
     // reprovado
